@@ -1,6 +1,6 @@
 # secludia
 
-    This is my personal game project, code entirely in rust with bevy engine.
+    This is my personal gaming project, coded entirely in rust with bevy engine.
 This project is meant for me to learn about rust and others coding/gaming relate technical knowledge and will be done entirely without AI.
 This mean that everything including researching, coding, typing documentation and all the small seeminly insignificant steps will be done by me in order to learn and understand coding better.
 

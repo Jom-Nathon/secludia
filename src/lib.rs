@@ -1,5 +1,6 @@
 
 use bevy::prelude::*;
+use bevy::camera_controller::free_camera::{ FreeCameraPlugin };
 
 mod setup;
 mod setting;
@@ -19,6 +20,8 @@ impl Plugin for GamePlugin {
             worldmap::WorldMapPlugin,
             battlefield::BattlefieldPlugin,
             unit::UnitPlugin,
+
+            FreeCameraPlugin,
         ));
     }
 }

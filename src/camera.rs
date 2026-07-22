@@ -3,10 +3,18 @@
 use bevy::prelude::*;
 use bevy::camera_controller::free_camera::{ FreeCamera };
 
-#[derive(Component)]
-pub struct MainCamera;
+pub struct CameraPlugin;
 
-pub fn spawn_camera(mut commands: Commands) {
+impl Plugin for CameraPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_systems(Startup, spawn_camera);
+    }
+}
+
+#[derive(Component)]
+struct MainCamera;
+
+fn spawn_camera(mut commands: Commands) {
     commands.spawn((
         Camera3d::default(),
         Transform::from_xyz(0.0, 12.0, 18.0).looking_at(Vec3::ZERO, Vec3::Y),

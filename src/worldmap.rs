@@ -1,23 +1,36 @@
-//! This example demonstrates how to use the `Camera::viewport_to_world` method.
 
 use bevy::prelude::*;
 
 #[derive(Component)]
-struct Ground;
+struct Node;
 
 #[derive(Component)]
-pub struct MainCamera;
+struct Connection;
 
-pub fn render_map(
+#[derive(Component)]
+struct PlateGroup;
+
+#[derive(Component)]
+struct PlateMovementVector;
+
+pub struct WorldMapPlugin;
+
+impl Plugin for WorldMapPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_systems(Startup, (render_map).chain());
+    }
+}
+
+fn render_map(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
+    mut materials: ResMut<Assets<StandardMaterial>>
 ) {
     // plane
     commands.spawn((
-        Mesh3d(meshes.add(Plane3d::default().mesh().size(20., 20.))),
+        Mesh3d(meshes.add(Plane3d::default().mesh().size(1., 1.))),
         MeshMaterial3d(materials.add(Color::srgb(0.3, 0.5, 0.3))),
-        Ground,
+        Node,
     ));
 
     // // light
